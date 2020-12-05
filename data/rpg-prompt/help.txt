@@ -1,0 +1,108 @@
+Welcome to the RPG Combat Assistant, by Guillermo Regodón
+
+With this Ruby Gem, you can handle complex RPG systems automatically, by means of 
+a set of options that can be passed in a prompt. I have included a simple set of
+rules of my own creation, but you may use this gem to program in Ruby your own
+rules or a set of commercial rules for your personal use. I have not included any
+set of commercial rules for copyright issues, even when I have programmed some for
+my pesonal use.
+
+Install the Gem, create your directory and type "rpg-prompt" to start. To start
+your personal set of rules, type "clone rules {new_rules_system}" indicating the
+name of your set of rules. after quitting "rpg-prompt" you will see the edittable
+files that code the new set of rules. Code them in Ruby, and start using them in
+your games.
+
+There are three types of warriors:
+   - Characters, which will be handled by players
+   - Foes, which are enemies of the players
+   - Spawns, generic enemies of which several with the same attributes may appears
+
+The warrios can be in the pool, meaning that they have been loaded but are not in
+combat. Type "pool" or "p" to print the pool. Spawns in the pool are templates.
+
+The warriors can be in combat, after being loaded. Type "combatstatus" or "s" to
+print the combat. Health points will be printed as well. Spawns in combat are
+copies of the template.
+
+Warriors can be loaded, saved and created
+   - To create a warrior, type "createchar" ("cc"), "createfoe" ("cf") or
+     "createspawn" ("cs") followed by the short name (no spaces) that you
+     will use to handle the warrior. A questionnaire will be prompt asking
+     for the values to fill the character sheet.
+     Spawns are special, they will have many names and full names, so that
+     when they are spawned into combat, random combinations will be used
+   - To save a warrior, type "save w {short_name}" or "sw {short_name}"
+   - To list the saved warriors, type "lw"
+   - To load a warrior, type "load w {short_name}" or "lw {short_name}"
+   - You may delete the file or delete from the prompt, using
+     "delete w {short_name}" or "dw {short_name}"
+
+Characters and Foes can be joined to the combat using "join {short_name}".
+Spawns have to be spawned into combat using "spawn {short_name} xN". N Spawns
+using the template will be spawned into combat. From this point, each spawn is
+a separate enemy named with the short name followed by a number (check using
+"combatstatus" or "s").
+
+Warriors leave the combat as they die, but they can also be removed:
+   - "leave {short_name}" for a warrior to leave the combat.
+   - "free {short_name}" to remove a warrior or a template from the pool
+   - "free all" to clean both the Combat and the pool
+
+Scenes are combinations of warriors to be saved and loaded at once. This allows
+you to prepare a scene and load it when the players enter a cetain place or trigger
+a certain event in your game.
+   - To save a scene, type "save s {scene_name}" or "ss {scene_name}"
+   - To list the saved scenes, type "ls"
+   - To load a scene, type "load s {scene_name}" or "ls {scene_name}"
+   - You may delete the file or delete from the prompt, using
+     "delete s {scene_name}" or "dw {scene_name}"
+
+You may pass a round using "round" or "round +N". Although, in the simple rules
+provided in this RPG helper, this has no effect.
+
+To perform an attack, use:
+   - "{attacker_short_name} hits {defender_short_name} -options"
+
+The options that are included in these simple rules are:
+   -c: to check the result of the attack but not apply the sometimes nasty
+       consequences. For kind Gamemasters.
+   -f: for a flank attack. It applies a bonus to the attack.
+   -r: for a rear attack. It applies a better bonus to the attack.
+   -h: for am attack from higher ground. It applies a bonus to the attack.
+   -s: for a surprise attack. It applies a bonus to the attack.
+   -u: for an attack while unsheathing the weapon. It applies a malus to
+       the attack.
+   -d: for an attack from a distance. It applies a malus to the attack.
+       Each time it is used, the attack is performed with a lower chance
+       of success.
+
+Options may be applied without consecutive slashes, but the first one is
+required. This may not make sense but for the distance modifier.
+   
+To perform an action, type:
+   - "skill {short_name} {skill_name} +/-mod -options"
+
+The mod modifier is of free use for the Gamemaster to match the special
+circumstances of the scene. Generic options can be applied. In these simple
+rules, the options are:
+   -c: to check the result of the action. Useless in these simple rules.
+   -e: to apply an "easy" bonus.
+   -m: to apply a "medium" bonus. Standard actions uses this modifier by
+       default.
+   -h: to apply a "hard" malus.
+
+To show the help for a certain skill, type "skill_help {skill_name}" or 
+just "sh {skill_name}". Type "skill_list" to show a list of the available
+skills.
+
+Type:
+   - "help" to print this help.
+   - "example" to print an example of use.
+   - "undo" to undo the last attack, in case the consequences are too nasty.
+   - "quit -s" to save and quit. Next time rpg-prompt is called, it will load
+     the status of the Pool and the Combat.
+   - "quit -q" to quit without saving.
+   - "clone rules {new_rules_system}" to clone the basic files to program,
+     in Ruby, a new set of rules.
+

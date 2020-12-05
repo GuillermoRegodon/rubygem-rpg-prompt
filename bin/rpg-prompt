@@ -1,0 +1,45 @@
+#!/usr/bin/env ruby
+require "rpg-prompt/parse_line.rb"
+
+# Settings_file_name = "./rpg-prompt.settings" # defined in manage_command.m
+# default value
+$language = "english"
+
+if File.exists?(Settings_file_name)
+  File.readlines(Settings_file_name).each do |line|
+    m = line.match(/(?<setting>\w*): (?<val>\w*)/)
+    if m == nil
+      break
+    else
+      case m[:setting]
+      when "language"
+        $language = m[:val]
+      end
+    end
+  end
+end
+
+Message::Dictionary.language = $language.to_sym
+
+Message.message(:greeting)
+
+Backup_file_name = "./.backup.marshal"
+
+if File.exist?(Backup_file_name)
+  line = ParseLine::Line.new("rrr")
+  command_symbol = line.parse.command
+end
+
+loop do
+  print (">>>")
+  line = ParseLine::Line.new($stdin.gets.chomp)
+  command_symbol = line.parse.command
+  puts
+  if command_symbol == :quit
+    break
+  end
+end
+
+Save.delete_pool
+Message.message(:goodbye)
+
