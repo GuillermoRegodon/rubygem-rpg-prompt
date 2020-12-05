@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "rpg-prompt"
-  spec.version       = '1.0'
+  spec.version       = '1.1'
   spec.authors       = ["Guillermo Regodón"]
   spec.email         = ["guillermoregodon@gmail.com"]
   spec.summary       = %q{Helper Prompt for playing Role Playing Games}
