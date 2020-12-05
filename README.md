@@ -61,7 +61,7 @@ combat starts with an attack from Billy the Warrior to Azog the white goblin.
 ¡Billy the Warrior attacks Azog the white goblin!
 Press 'r' to enter a roll or any other key for a random roll.
 ```
-You may enter the roll in you prefer to roll real dice instead of getting random
+You may enter the roll if you prefer to roll real dice instead of getting random
 numbers from an unknown algorithm. Let us trust the random number generator to be
 a fair judge of the warriors destiny.
 ```
