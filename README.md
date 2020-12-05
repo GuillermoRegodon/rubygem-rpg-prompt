@@ -194,7 +194,7 @@ We have use "ss" as a short version of "save s". Let us list the save scenes
 orc_hall
 wolf_cave
 ```
-The command "load scene orc_hall" or "ls orc_hall" loads azog and the orc
+The command "load s orc_hall" or "ls orc_hall" loads azog and the orc
 template into the pool, and Azog the white goblin, Agash the Gross, Ulag
 the Cruel and Gorbagh the Smelly into the combat.
 
